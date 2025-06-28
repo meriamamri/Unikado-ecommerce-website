@@ -187,6 +187,61 @@ const mockOrders = {
       total: 405.9,
     },
   },
+  UK123456: {
+    orderNumber: "UK123456",
+    status: "processing",
+    paymentStatus: "completed",
+    createdAt: "2024-03-19T13:45:00Z",
+    estimatedDelivery: "2024-03-29T00:00:00Z",
+    customer: {
+      name: "Pierre Leroy",
+      email: "pierre.leroy@email.com",
+      phone: "+33 1 56 78 90 12",
+    },
+    billing: {
+      firstName: "Pierre",
+      lastName: "Leroy",
+      email: "pierre.leroy@email.com",
+      address: "987 Rue de la République",
+      city: "Marseille",
+      postalCode: "13001",
+      country: "France",
+    },
+    shipping: {
+      firstName: "Pierre",
+      lastName: "Leroy",
+      address: "987 Rue de la République",
+      city: "Marseille",
+      postalCode: "13001",
+      country: "France",
+    },
+    items: [
+      {
+        id: 8,
+        name: "Invitations baptême",
+        description: "Design délicat pour célébrer ce moment unique",
+        image:
+          "https://images.pexels.com/photos/1666065/pexels-photo-1666065.jpeg?auto=compress&cs=tinysrgb&w=300",
+        price: 14,
+        quantity: 40,
+        customization: {
+          eventType: "Baptême",
+          childName: "Lucas Leroy",
+          parentNames: "Pierre & Anne Leroy",
+          eventDate: "2024-04-20",
+          theme: "Religieux",
+          color: "Blanc et or",
+        },
+      },
+    ],
+    pricing: {
+      subtotal: 560,
+      discount: 28,
+      shipping: 8,
+      tax: 112,
+      total: 652,
+    },
+  },
   UK867012: {
     orderNumber: "UK867012",
     status: "processing",
@@ -273,35 +328,35 @@ const mockOrders = {
     items: [
       {
         id: 6,
-        name: "Cartes de remerciement",
-        description: "Élégantes cartes pour remercier vos invités",
-        image:
-          "https://images.pexels.com/photos/1666065/pexels-photo-1666065.jpeg?auto=compress&cs=tinysrgb&w=300",
-        price: 8,
-        quantity: 75,
-        customization: {
-          eventType: "Mariage",
-          brideName: "Claire Moreau",
-          groomName: "Antoine Dubois",
-          eventDate: "2024-02-14",
-          theme: "Romantique",
-          color: "Rose et doré",
-        },
+      name: "Cartes de remerciement",
+      description: "Élégantes cartes pour remercier vos invités",
+      image:
+        "https://images.pexels.com/photos/1666065/pexels-photo-1666065.jpeg?auto=compress&cs=tinysrgb&w=300",
+      price: 8,
+      quantity: 75,
+      customization: {
+        eventType: "Mariage",
+        brideName: "Claire Moreau",
+        groomName: "Antoine Dubois",
+        eventDate: "2024-02-14",
+        theme: "Romantique",
+        color: "Rose et doré",
       },
-    ],
-    pricing: {
-      subtotal: 600,
-      discount: 60,
-      shipping: 8.5,
-      tax: 120,
-      total: 668.5,
     },
-    tracking: {
-      carrier: "Chronopost",
-      trackingNumber: "CH987654321FR",
-      trackingUrl: "https://www.chronopost.fr/tracking-no-cms/suivi-page",
-    },
+  ],
+  pricing: {
+    subtotal: 600,
+    discount: 60,
+    shipping: 8.5,
+    tax: 120,
+    total: 668.5,
   },
+  tracking: {
+    carrier: "Chronopost",
+    trackingNumber: "CH987654321FR",
+    trackingUrl: "https://www.chronopost.fr/tracking-no-cms/suivi-page",
+  },
+},
 };
 
 // Generate static params for all available order IDs
