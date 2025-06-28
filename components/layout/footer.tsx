@@ -42,6 +42,7 @@ export function Footer() {
               <li><Link href="/products" className="text-muted-foreground hover:text-primary">Nos produits</Link></li>
               <li><Link href="/custom" className="text-muted-foreground hover:text-primary">Personnalisation</Link></li>
               <li><Link href="/orders" className="text-muted-foreground hover:text-primary">Mes commandes</Link></li>
+              <li><Link href="/reviews" className="text-muted-foreground hover:text-primary">Avis clients</Link></li>
               <li><Link href="/about" className="text-muted-foreground hover:text-primary">À propos</Link></li>
               <li><Link href="/contact" className="text-muted-foreground hover:text-primary">Contact</Link></li>
             </ul>

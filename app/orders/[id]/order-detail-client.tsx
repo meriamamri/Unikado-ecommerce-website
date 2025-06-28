@@ -16,10 +16,12 @@ import {
   Mail,
   Phone,
   MapPin,
-  Eye
+  Eye,
+  Star
 } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ReviewModal } from '@/components/reviews/review-modal';
 
 const orderSteps = [
   { 
@@ -92,6 +94,8 @@ interface OrderDetailClientProps {
 
 export function OrderDetailClient({ order }: OrderDetailClientProps) {
   const [loading, setLoading] = useState(true);
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
   useEffect(() => {
     // Simulate loading
@@ -110,6 +114,11 @@ export function OrderDetailClient({ order }: OrderDetailClientProps) {
     });
   };
 
+  const handleReviewClick = (product: any) => {
+    setSelectedProduct(product);
+    setReviewModalOpen(true);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -123,6 +132,7 @@ export function OrderDetailClient({ order }: OrderDetailClientProps) {
 
   const statusInfo = getStatusInfo(order.status);
   const paymentInfo = getPaymentStatusInfo(order.paymentStatus);
+  const isDelivered = order.status === 'delivered';
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -278,6 +288,16 @@ export function OrderDetailClient({ order }: OrderDetailClientProps) {
                               {item.customization.babyName}
                             </Badge>
                           )}
+                          {item.customization.childName && (
+                            <Badge variant="outline">
+                              {item.customization.childName}
+                            </Badge>
+                          )}
+                          {item.customization.celebrantName && (
+                            <Badge variant="outline">
+                              {item.customization.celebrantName}
+                            </Badge>
+                          )}
                           {item.customization.theme && (
                             <Badge variant="outline">{item.customization.theme}</Badge>
                           )}
@@ -290,9 +310,22 @@ export function OrderDetailClient({ order }: OrderDetailClientProps) {
                           <span className="text-sm text-gray-600">
                             Quantité: {item.quantity}
                           </span>
-                          <span className="font-semibold text-teal-600">
-                            {(item.price * item.quantity).toFixed(2)}€
-                          </span>
+                          <div className="flex items-center space-x-2">
+                            <span className="font-semibold text-teal-600">
+                              {(item.price * item.quantity).toFixed(2)}€
+                            </span>
+                            {isDelivered && (
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => handleReviewClick(item)}
+                                className="ml-2"
+                              >
+                                <Star className="h-4 w-4 mr-1" />
+                                Laisser un avis
+                              </Button>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -401,13 +434,6 @@ export function OrderDetailClient({ order }: OrderDetailClientProps) {
                     Contacter le support
                   </Link>
                 </Button>
-                
-                {order.status === 'delivered' && (
-                  <Button className="w-full" variant="outline">
-                    <Eye className="h-4 w-4 mr-2" />
-                    Laisser un avis
-                  </Button>
-                )}
               </CardContent>
             </Card>
 
@@ -434,6 +460,19 @@ export function OrderDetailClient({ order }: OrderDetailClientProps) {
           </motion.div>
         </div>
       </div>
+
+      {/* Review Modal */}
+      {selectedProduct && (
+        <ReviewModal
+          isOpen={reviewModalOpen}
+          onClose={() => {
+            setReviewModalOpen(false);
+            setSelectedProduct(null);
+          }}
+          orderNumber={order.orderNumber}
+          productName={selectedProduct.name}
+        />
+      )}
     </div>
   );
 }
