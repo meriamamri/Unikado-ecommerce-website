@@ -1,6 +1,7 @@
 import { Hero } from '@/components/home/hero';
 import { EventCategories } from '@/components/home/event-categories';
 import { FeaturedProducts } from '@/components/home/featured-products';
+import { OrderTracking } from '@/components/home/order-tracking';
 import { Testimonials } from '@/components/home/testimonials';
 import { ProcessSteps } from '@/components/home/process-steps';
 import { BlogTeaser } from '@/components/home/blog-teaser';
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <EventCategories />
       <FeaturedProducts />
+      <OrderTracking />
       <ProcessSteps />
       <Testimonials />
       <BlogTeaser />
