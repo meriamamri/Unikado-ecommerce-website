@@ -14,7 +14,8 @@ import {
   ShoppingCart, 
   User, 
   Heart,
-  X
+  X,
+  Settings
 } from 'lucide-react';
 
 const navigation = [
@@ -35,6 +36,7 @@ export function Header() {
   // Mock data - in real app, these would come from state management
   const cartItemsCount = 2;
   const isLoggedIn = false; // Change to true to test logged in state
+  const isAdmin = true; // Set to true to show admin link
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,6 +112,15 @@ export function Header() {
                 </Button>
               )}
             </div>
+
+            {/* Admin Dashboard Link */}
+            {isAdmin && (
+              <Button variant="ghost" size="icon" className="hidden sm:flex h-9 w-9" asChild>
+                <Link href="/admin">
+                  <Settings className="h-4 w-4" />
+                </Link>
+              </Button>
+            )}
 
             {/* Wishlist/Heart */}
             <Button variant="ghost" size="icon" className="hidden sm:flex h-9 w-9 relative" asChild>
@@ -191,6 +202,15 @@ export function Header() {
 
                   {/* Mobile Actions */}
                   <div className="space-y-4 mt-auto">
+                    {isAdmin && (
+                      <Button variant="outline" className="w-full justify-start" asChild>
+                        <Link href="/admin" onClick={() => setIsOpen(false)}>
+                          <Settings className="h-4 w-4 mr-2" />
+                          Administration
+                        </Link>
+                      </Button>
+                    )}
+
                     <Button variant="outline" className="w-full justify-start" asChild>
                       <Link href="/wishlist" onClick={() => setIsOpen(false)}>
                         <Heart className="h-4 w-4 mr-2" />
