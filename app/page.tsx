@@ -1,4 +1,4 @@
-import { Hero } from '@/components/home/hero';
+import { Hero } from '@/components/home/Hero';
 import { EventCategories } from '@/components/home/event-categories';
 import { FeaturedProducts } from '@/components/home/featured-products';
 import { OrderTracking } from '@/components/home/order-tracking';
