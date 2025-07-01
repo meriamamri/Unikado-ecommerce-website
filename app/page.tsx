@@ -3,7 +3,7 @@ import { EventCategories } from '@/components/home/EventCategories';
 import { FeaturedProducts } from '@/components/home/FeaturedProducts.client';
 import { OrderTracking } from '@/components/home/order-tracking';
 import { Testimonials } from '@/components/home/testimonials';
-import { ProcessSteps } from '@/components/home/process-steps';
+import {ProcessSteps} from '@/components/home/processSteps.server';
 import { BlogTeaser } from '@/components/home/blog-teaser';
 
 export default function Home() {
