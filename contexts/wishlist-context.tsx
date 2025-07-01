@@ -3,18 +3,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { toast } from 'sonner';
 
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  rating: number;
-  reviews: number;
-  category: string;
-  event: string;
-  badge?: string | null;
-}
+import { Product } from '@/types/product';
 
 interface WishlistContextType {
   wishlistItems: Product[];
