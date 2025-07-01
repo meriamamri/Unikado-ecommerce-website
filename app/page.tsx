@@ -1,5 +1,5 @@
 import { Hero } from '@/components/home/Hero';
-import { EventCategories } from '@/components/home/event-categories';
+import { EventCategories } from '@/components/home/EventCategories';
 import { FeaturedProducts } from '@/components/home/featured-products';
 import { OrderTracking } from '@/components/home/order-tracking';
 import { Testimonials } from '@/components/home/testimonials';
